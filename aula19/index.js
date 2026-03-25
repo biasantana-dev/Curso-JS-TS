@@ -1,15 +1,16 @@
 /*
-Primitivos (imutáveis) - string, number, boolean, undefined, null (bigint, symbol) - Valor
+Primitivos (imutáveis) - string, number, boolean, undefined, null (bigint, symbol) - Valores copiados
 
-Referência (mutável) - array, object, function 
- */
+Referência (mutável) - array, object, function - Passados por referência
+ */ 
 
-let a = [1, 2, 3];
-let b = a;
-console.log(a, b);
+const a = {
+   nome: 'Luiz',
+   sobrenome: 'Otávio'
+};
 
-a.push(4);
-console.log(a, b);
+const b = {a};
 
-b.pop();
-console.log(a, b);
+a.nome = 'João';
+console.log(a);
+console.log(b);
