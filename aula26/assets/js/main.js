@@ -7,9 +7,14 @@ form.addEventListener('submit', function(e) {
    setResultado('Olá mundo!');
 });
 
+function criaP () {
+   const p = document.createElement('p');
+   p.classList.add('paragrafo-resultado');
+   p.innerHTML = 'Qualquer coisa';
+}
+
 function setResultado(msg) {
    const resultado = document.querySelector('#resultado');
    resultado.innerHTML = '';
-   const p = document.createElement('p');
-   p.innerHTML = 'Qualquer coisa';
+   resultado.appendChild(p);
 }
