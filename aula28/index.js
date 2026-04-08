@@ -2,7 +2,7 @@
 // const data = new Date(2019, 3); // a, m, d, h, M, s, ms
 const data = new Date('2019-04-20 20:20:59')
 console.log('Dia', data.getDate());
-console.log('Mês', data.getMonth());
+console.log('Mês', data.getMonth() + 1);
 console.log('Ano', data.getFullYear());
 console.log('Hora', data.getHours());
 console.log('Min', data.getMinutes());
