@@ -19,5 +19,5 @@ try {
 } catch (e) {
    // Tratar erro
 } finally {
-   console.log('Tenha um bpm dia!')
+   console.log('Tenha um bom dia!')
 }
