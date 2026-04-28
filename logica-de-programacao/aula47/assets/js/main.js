@@ -1,26 +1,41 @@
-function mostrarTimer() {
-   let timer = new Date('01-01-1970 00:00:00');
-   return timer.toLocaleTimeString('pt-br', {
-      hour12: false
+function relogio() {
+   function getTimeFromSeconds(segundos) {
+      const data = new Date(segundos * 1000);
+      return data.toLocaleTimeString('pt-BR', {
+         hour12: false,
+         timeZone: 'UTC'
+      });
+   }
+
+   let segundos = 0;
+   let timer;
+
+   function iniciaRelogio() {
+      timer = setInterval(function () {
+         segundos++;
+         relogio.innerHTML = getTimeFromSeconds(segundos);
+      }, 1000)
+   }
+
+   document.addEventListener('click', function (e) {
+      const elemento = e.target; // e.target é o elemento que está sendo clicado
+
+      if (elemento.classList.contains('zerar')) {
+         relogio.classList.remove('pausado');
+         clearInterval(timer);
+         relogio.innerHTML = '00:00:00';
+         segundos = 0;
+      }
+
+      if (elemento.classList.contains('iniciar')) {
+         relogio.classList.remove('pausado');
+         clearInterval(timer);
+         iniciaRelogio();
+      }
+
+      if (elemento.classList.contains('pausar')) {
+         relogio.classList.add('pausado');
+         clearInterval(timer);
+      }
    });
 }
-console.log(mostrarTimer());
-
-
-
-const relogio = document.querySelector('.relogio');
-const iniciar = document.querySelector('.iniciar');
-const pausar = document.querySelector('.pausar');
-const zerar = document.querySelector('.zerar');
-
-iniciar.addEventListener('click', function (event) {
-   relogio.innerHTML =  mostrarTimer(setInterval(1000));
-});
-
-pausar.addEventListener('click', function (event) {
-   alert('Cliquei no pausar')
-});
-
-zerar.addEventListener('click', function (event) {
-   alert('Cliquei no zerar')
-});
